@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.logging.Logger;
 
-public class TvShowDemo {
+public class CreateTvShow {
     public static void main(String [] args) {
 
         // create logger
@@ -24,21 +24,21 @@ public class TvShowDemo {
         Session session = factory.getCurrentSession();
 
         try {
-
             // create tvshow object
-            logger.info("Creating new TvShow object...");
-            TvShow show = new TvShow(
-                    "Game of Thrones",
-                    "HBO",
-                    "2011-04-17",
-                    "Fantasy, Serial Drama");
+            logger.info("Creating new TvShow objects...");
+
+            TvShow [] shows = { new TvShow("This Is Us", "NBC", "2016-09-16", "Family Drama"),
+                    new TvShow("The Office", "NBC", "2005-03-24", "Sitcom"),
+                    new TvShow("Seinfeld", "NBC", "1989-04-05", "Sitcom") };
 
             // start a transaction
             session.beginTransaction();
 
-            // save tvshow object
-            logger.info("Saving the TvShow object");
-            session.save(show);
+            logger.info("Saving the TvShow objects");
+            for(TvShow show : shows) {
+                // save tvshow objects
+                session.save(show);
+            }
 
             // commit transaction
             session.getTransaction().commit();
