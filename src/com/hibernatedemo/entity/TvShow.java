@@ -1,15 +1,13 @@
 package com.hibernatedemo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="tvshow")
 public class TvShow {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
 
@@ -27,8 +25,7 @@ public class TvShow {
 
     public TvShow() {}
 
-    public TvShow(int id, String name, String network, String releaseDate, String genre) {
-        this.id = id;
+    public TvShow(String name, String network, String releaseDate, String genre) {
         this.name = name;
         this.network = network;
         this.releaseDate = releaseDate;
