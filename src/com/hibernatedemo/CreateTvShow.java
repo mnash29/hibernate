@@ -27,9 +27,9 @@ public class CreateTvShow {
             // create tvshow object
             logger.info("Creating new TvShow objects...");
 
-            TvShow [] shows = { new TvShow("This Is Us", "NBC", "2016-09-16", "Family Drama"),
-                    new TvShow("The Office", "NBC", "2005-03-24", "Sitcom"),
-                    new TvShow("Seinfeld", "NBC", "1989-04-05", "Sitcom") };
+            TvShow [] shows = { new TvShow(1,"This Is Us", "NBC", "2016-09-16", "Family Drama"),
+                    new TvShow(2,"The Office", "NBC", "2005-03-24", "Sitcom"),
+                    new TvShow(3,"Seinfeld", "NBC", "1989-04-05", "Sitcom") };
 
             // start a transaction
             session.beginTransaction();
