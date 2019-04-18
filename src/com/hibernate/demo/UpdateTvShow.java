@@ -1,6 +1,6 @@
-package com.hibernatedemo;
+package com.hibernate.demo;
 
-import com.hibernatedemo.entity.TvShow;
+import com.hibernate.demo.entity.TvShow;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
