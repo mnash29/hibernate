@@ -30,7 +30,7 @@ public class GetInstructorDetail {
             session.beginTransaction();
 
             // get instructor detail
-            int id = 2;
+            int id = 22;
             InstructorDetail instructorDetail = session.get(InstructorDetail.class, id);
 
             // print instructor detail
@@ -41,7 +41,12 @@ public class GetInstructorDetail {
 
             // commit transaction
             session.getTransaction().commit();
-        } finally {
+        }
+        catch (Exception exc) {
+            logger.log(Level.WARNING, "Exception in GetInstructorDetail Main", exc);
+        }
+        finally {
+            session.close();
             factory.close();
         }
     }
