@@ -71,12 +71,14 @@ public class InstructorDetail {
     }
 
     // generate toString method
+
     @Override
     public String toString() {
         return "InstructorDetail{" +
                 "id=" + id +
                 ", youTubeChannel='" + youTubeChannel + '\'' +
                 ", hobby='" + hobby + '\'' +
+                ", instructor=" + instructor +
                 '}';
     }
 }
