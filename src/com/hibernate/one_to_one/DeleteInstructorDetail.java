@@ -30,10 +30,13 @@ public class DeleteInstructorDetail {
             session.beginTransaction();
 
             // get instructor detail
-            int id = 2;
+            int id = 4;
             InstructorDetail instructorDetail = session.get(InstructorDetail.class, id);
 
-            // delete instructor detail
+            // break bi-directional reference
+            instructorDetail.getInstructor().setInstructorDetail(null);
+
+            // delete instructor detail - will NOT cascade to Instructor
             logger.log(Level.INFO, "Deleting InstructorDetail: {0}", instructorDetail);
             session.delete(instructorDetail);
 
