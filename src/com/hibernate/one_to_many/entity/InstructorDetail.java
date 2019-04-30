@@ -1,6 +1,13 @@
 package com.hibernate.one_to_many.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
 
 @Entity
 @Table(name="instructor_detail")
