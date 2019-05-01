@@ -107,15 +107,17 @@ public class Instructor {
     }
 
     // convenience method for bi-directional relationship
-    public void add(Course newCourse) {
-        if(newCourse != null) {
+    public void add(List<Course> newCourses) {
+        if(newCourses != null) {
             if (courses == null) {
                 courses = new ArrayList<>();
             }
 
-            courses.add(newCourse);
+            courses.addAll(newCourses);
 
-            newCourse.setInstructor(this);
+            for(Course course : newCourses) {
+                course.setInstructor(this);
+            }
         }
     }
 }
