@@ -1,5 +1,6 @@
 package com.hibernate.one_to_many;
 
+import com.hibernate.one_to_many.entity.Course;
 import com.hibernate.one_to_many.entity.Instructor;
 import com.hibernate.one_to_many.entity.InstructorDetail;
 import org.hibernate.Session;
@@ -20,6 +21,7 @@ public class CreateInstructor {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         // create session
@@ -28,12 +30,12 @@ public class CreateInstructor {
         try {
 
             // Create objects
-            Instructor instructor = new Instructor("Tom", "Cruz", "tomcruz.luv2code.com");
+            Instructor instructor = new Instructor("Elizabeth", "Monnat", "liz.monnat.luv2code.com");
 
             InstructorDetail instructorDetail = new InstructorDetail(
-                    "http://www.luv2code.com/youtube", "Programming");
+                    "http://www.youtube.com", "Gaming");
 
-            // Associate objects
+            // Associate Instructor with InstructorDetail
             instructor.setInstructorDetail(instructorDetail);
 
             // start a transaction
@@ -51,6 +53,7 @@ public class CreateInstructor {
             logger.info("Save successful");
 
         } finally {
+            session.close();
             factory.close();
         }
     }
