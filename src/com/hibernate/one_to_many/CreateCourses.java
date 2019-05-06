@@ -48,11 +48,12 @@ public class CreateCourses {
 
             // save courses
             for(Course course : courses) {
-
+                session.save(course);
             }
             // commit transaction
             session.getTransaction().commit();
             logger.log(Level.INFO, "Complete!");
+
         } finally {
             session.close();
             factory.close();
