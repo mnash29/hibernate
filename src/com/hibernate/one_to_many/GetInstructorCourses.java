@@ -1,5 +1,6 @@
 package com.hibernate.one_to_many;
 
+import com.hibernate.one_to_many.entity.Course;
 import com.hibernate.one_to_many.entity.Instructor;
 import com.hibernate.one_to_many.entity.InstructorDetail;
 import org.hibernate.Session;
@@ -9,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GetInstructorDetail {
+public class GetInstructorCourses {
     public static void main(String [] args) {
 
         // create logger
@@ -20,6 +21,7 @@ public class GetInstructorDetail {
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         // create session
@@ -29,21 +31,19 @@ public class GetInstructorDetail {
             // start transaction
             session.beginTransaction();
 
-            // get instructor detail
-            int id = 22;
-            InstructorDetail instructorDetail = session.get(InstructorDetail.class, id);
+            // get instructor
+            int id = 1;
+            Instructor instructor = session.get(Instructor.class, id);
+            logger.log(Level.INFO, "Instructor: {0}", instructor);
 
-            // print instructor detail
-            logger.log(Level.INFO, "InstructorDetail: {0}", instructorDetail);
-
-            // print associated instructor
-            logger.log(Level.INFO, "Associated Instructor: {0}", instructorDetail.getInstructor());
+            // get courses for the instructor
+            logger.log(Level.INFO, "Courses: {0}", instructor.getCourses());
 
             // commit transaction
             session.getTransaction().commit();
         }
         catch (Exception exc) {
-            logger.log(Level.WARNING, "Exception in GetInstructorDetail Main", exc);
+            logger.log(Level.WARNING, "Exception in GetInstructorCourses Main", exc);
         }
         finally {
             session.close();
