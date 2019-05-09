@@ -1,8 +1,8 @@
 package com.hibernate.eager_vs_lazy;
 
-import com.hibernate.one_to_many.entity.Course;
-import com.hibernate.one_to_many.entity.Instructor;
-import com.hibernate.one_to_many.entity.InstructorDetail;
+import com.hibernate.eager_vs_lazy.entity.Course;
+import com.hibernate.eager_vs_lazy.entity.Instructor;
+import com.hibernate.eager_vs_lazy.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
