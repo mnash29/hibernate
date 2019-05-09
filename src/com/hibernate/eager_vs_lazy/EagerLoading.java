@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EagerVsLazy {
+public class EagerLoading {
     public static void main(String [] args) {
 
         // create logger
@@ -31,19 +31,19 @@ public class EagerVsLazy {
             // start transaction
             session.beginTransaction();
 
-            // get instructor
-            int id = 1;
-            Instructor instructor = session.get(Instructor.class, id);
-            logger.log(Level.INFO, "Instructor: {0}", instructor);
+            // get instructor with eager loading
+            int instructorId = 1;
+            Instructor instructor = session.get(Instructor.class, instructorId);
+            logger.log(Level.INFO, "Eager: Instructor: {0}", instructor);
 
             // get courses for the instructor
-            logger.log(Level.INFO, "Courses: {0}", instructor.getCourses());
+            logger.log(Level.INFO, "Eager: Courses: {0}", instructor.getCourses());
 
             // commit transaction
             session.getTransaction().commit();
         }
         catch (Exception exc) {
-            logger.log(Level.WARNING, "Exception in EagerVsLazy Main", exc);
+            logger.log(Level.WARNING, "Exception in EagerLoading Main", exc);
         }
         finally {
             session.close();
